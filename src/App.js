@@ -12,7 +12,8 @@ export default class App extends Component {
     this.state = {
 
       monsters: [],
-      searchField: ''
+      searchField: '',
+      secretOfLife:47
     }
   }
 
@@ -27,6 +28,12 @@ export default class App extends Component {
     this.setState({ searchField: e.target.value })
   }
 
+  handleClick=()=>{
+    this.setState((prevState,prevProps)=>{
+      return {secretOfLife:prevState.secretOfLife+1}
+    },
+    ()=>console.log(this.state.secretOfLife))
+  }
   render() {
 
     // const monsters= this.state.monsters same thing
@@ -36,6 +43,10 @@ export default class App extends Component {
 
     return (
       <div className="App">
+        <p>{this.state.secretOfLife}</p>
+        <button
+          onClick={this.handleClick}
+        >Increment Number</button>
         <h1>Monsters Rolodex</h1>
         <SearchBox
           placeholder='Search Monster'
